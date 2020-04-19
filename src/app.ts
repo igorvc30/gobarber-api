@@ -7,9 +7,6 @@ import 'express-async-errors';
 import routes from './routes';
 import AppError from './errors/AppError';
 
-import createConnection from './database';
-
-createConnection();
 const app = express();
 
 app.use(express.json());
