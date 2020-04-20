@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import path from 'path';
 import User from '../models/User';
+import AppError from '../errors/AppError';
 import uploadConfig from '../config/upload';
 import fs from 'fs';
 
@@ -18,7 +19,7 @@ class UpdateUserAvatarService {
       },
     });
     if (!user) {
-      throw new Error('Only authenticated users can chance avatar.');
+      throw new AppError('Only authenticated users can chance avatar.', 401);
     }
 
     if (user.avatar) {
